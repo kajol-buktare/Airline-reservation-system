@@ -1,0 +1,246 @@
+{
+  "info": {
+    "_postman_id": "airline-reservation-api-collection",
+    "name": "Airline Reservation System API",
+    "description": "Collection for testing Airline Reservation System REST API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Flights",
+      "item": [
+        {
+          "name": "Get All Flights",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/flights",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "flights"]
+            }
+          }
+        },
+        {
+          "name": "Get Flight by ID",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/flights/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "flights", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Flight",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"airline\": \"Swiss International Air Lines\",\n  \"type\": \"Airbus A220\",\n  \"price\": 349.99,\n  \"departure_city\": \"Zurich\",\n  \"arrival_city\": \"Berlin\",\n  \"departure_datetime\": \"2026-02-25T10:00:00\",\n  \"arrival_datetime\": \"2026-02-25T12:00:00\",\n  \"status\": \"ACTIVE\",\n  \"image_url\": \"https://example.com/swiss.jpg\",\n  \"email\": \"admin@swiss.com\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/flights",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "flights"]
+            }
+          }
+        },
+        {
+          "name": "Update Flight",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"airline\": \"Lufthansa Premium\",\n  \"type\": \"Boeing 737\",\n  \"price": 399.99,\n  \"departure_city\": \"Berlin\",\n  \"arrival_city\": \"Munich\",\n  \"departure_datetime\": \"2026-02-25T14:00:00\",\n  \"arrival_datetime\": \"2026-02-25T16:00:00\",\n  \"status\": \"ACTIVE\",\n  \"image_url\": \"https://example.com/lufthansa-premium.jpg\",\n  \"email\": \"admin@lufthansa.com\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/v1/flights/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "flights", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Flight",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/flights/1",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "flights", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Search & Filter",
+      "item": [
+        {
+          "name": "Search Flights",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/flights/search?departure_city=Berlin&arrival_city=Munich&status=ACTIVE",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "flights", "search"],
+              "query": [
+                {
+                  "key": "departure_city",
+                  "value": "Berlin"
+                },
+                {
+                  "key": "arrival_city",
+                  "value": "Munich"
+                },
+                {
+                  "key": "status",
+                  "value": "ACTIVE"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Flights by Departure City",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/flights/departure-city/Berlin",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "flights", "departure-city", "Berlin"]
+            }
+          }
+        },
+        {
+          "name": "Get Flights by Arrival City",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/flights/arrival-city/Munich",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "flights", "arrival-city", "Munich"]
+            }
+          }
+        },
+        {
+          "name": "Get Flights by Status",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/flights/status/ACTIVE",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "flights", "status", "ACTIVE"]
+            }
+          }
+        },
+        {
+          "name": "Get Flights by Airline",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/flights/airline/Lufthansa",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "flights", "airline", "Lufthansa"]
+            }
+          }
+        },
+        {
+          "name": "Get Flights Departing After",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8080/api/v1/flights/departing-after/2026-02-15T00:00:00",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8080",
+              "path": ["api", "v1", "flights", "departing-after", "2026-02-15T00:00:00"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
